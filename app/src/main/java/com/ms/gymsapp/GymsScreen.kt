@@ -15,8 +15,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -28,15 +26,16 @@ import com.ms.gymsapp.ui.theme.Purple40
 fun GymsScreen() {
     val vm : GymsViewModel = viewModel()
     LazyColumn () {
-       items(vm.getGyms()) { it->
-           ItemGym(it)
-       }
+        items(vm.state.value){ gym ->
+            ItemGym(gym = gym,{
+                vm.toggleFavoriteState(it)
+            })
+        }
     }
 }
 @Composable
-fun ItemGym(gym: Gym) {
-    val isFavorite = remember { mutableStateOf(false) }
-    val icon = if (isFavorite.value)
+fun ItemGym(gym: Gym,onClick:(Int)-> Unit ) {
+    val icon = if (gym.isFavorite)
     {
         Icons.Filled.Favorite
     } else {
@@ -52,17 +51,16 @@ fun ItemGym(gym: Gym) {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             DefaultIcon(
-                Icons.Filled.Favorite,
+                icon,
                 modifier = Modifier.weight(0.15f),
                 contentDescription = "Icon",
                 )
             GymDetails(gym, modifier = Modifier.weight(0.70f))
             DefaultIcon(
                 icon, modifier = Modifier.weight(0.15f),
-                contentDescription = "Icon",
-                {
-                isFavorite.value=!isFavorite.value
-            })
+                contentDescription = "Icon",{
+                    onClick(gym.id)
+                })
         }
     }
 }
