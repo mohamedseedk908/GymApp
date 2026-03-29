@@ -31,18 +31,6 @@ data class Gym(
             id = 6,
             name = "UpTown Gym",
             place = "20 El-Gihad, Mit Akaba, Agouza, Giza Governorate 3754204, Egypt",
-        ),   Gym(
-            id = 7,
-            name = "UpTown Gym",
-            place = "20 El-Gihad, Mit Akaba, Agouza, Giza Governorate 3754204, Egypt",
-        ),   Gym(
-            id = 8,
-            name = "UpTown Gym",
-            place = "20 El-Gihad, Mit Akaba, Agouza, Giza Governorate 3754204, Egypt",
-        ),   Gym(
-            id = 9,
-            name = "UpTown Gym",
-            place = "20 El-Gihad, Mit Akaba, Agouza, Giza Governorate 3754204, Egypt",
         ),
 
     )
