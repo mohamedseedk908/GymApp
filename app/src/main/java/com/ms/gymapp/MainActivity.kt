@@ -30,11 +30,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HomeScreen()
-
         }
     }
 }
-
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun MyButton(text: String) {
@@ -65,12 +63,10 @@ fun MyCenter() {
         MyImage()
     }
 }
-
 @Composable
 fun MyImage() {
     Image(
         painter = painterResource(id = R.drawable.ic_launcher_background),
         contentDescription = "Mohamed "
     )
-
 }
